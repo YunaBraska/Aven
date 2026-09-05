@@ -1,0 +1,3 @@
+interface:
+  display_name: "Authenticated REST"
+  short_description: "Use scoped service APIs without exposing tokens"

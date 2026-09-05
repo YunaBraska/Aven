@@ -1,0 +1,4 @@
+interface:
+  display_name: "Assistant Credentials"
+  short_description: "Use the app-scoped Keychain broker safely"
+  default_prompt: "Use $assistant-credentials for this authenticated task without exposing secrets."

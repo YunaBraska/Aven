@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI & UX"
+  short_description: "Accessible platform-native interface design"
+  default_prompt: "Use $ui-ux to design or review this interface for its actual platform and users."

@@ -1,0 +1,39 @@
+name: Aven
+options:
+  bundleIdPrefix: com.yunabraska
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: YES
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.0.1"
+    CURRENT_PROJECT_VERSION: "1"
+    WARNING_CFLAGS: -Wall
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+targets:
+  Aven:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+      - path: Resources/AssistantTemplate
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yunabraska.aven
+        PRODUCT_NAME: Aven
+        EXECUTABLE_NAME: Aven
+        INFOPLIST_FILE: Resources/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: Resources/Aven.entitlements
+        OTHER_SWIFT_FLAGS: -warnings-as-errors
+        SWIFT_OPTIMIZATION_LEVEL: -O
+    scheme:
+      testTargets: []

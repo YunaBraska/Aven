@@ -1,0 +1,11 @@
+.DS_Store
+.venv/
+dist/
+.test-build.*
+.test-debug/
+build/
+DerivedData/
+__pycache__/
+*.pyc
+*.xcuserstate
+xcuserdata/

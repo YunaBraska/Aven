@@ -1,0 +1,4 @@
+interface:
+  display_name: "macOS Operations"
+  short_description: "Operate and automate macOS safely"
+  default_prompt: "Use $macos-operations to inspect and perform this macOS task with native tools."

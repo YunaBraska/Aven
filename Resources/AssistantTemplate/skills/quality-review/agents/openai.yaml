@@ -1,0 +1,3 @@
+interface:
+  display_name: "Quality Review"
+  short_description: "Find concrete risks and unnecessary complexity"

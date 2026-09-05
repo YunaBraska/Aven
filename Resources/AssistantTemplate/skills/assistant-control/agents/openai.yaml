@@ -1,0 +1,3 @@
+interface:
+  display_name: "Assistant Controls"
+  short_description: "Control speech and active work explicitly"

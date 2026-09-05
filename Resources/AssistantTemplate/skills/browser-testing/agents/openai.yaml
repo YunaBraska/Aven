@@ -1,0 +1,4 @@
+interface:
+  display_name: "Browser testing"
+  short_description: "Test web interfaces through observable browser behavior"
+  default_prompt: "Test this web interface through its public browser behavior."

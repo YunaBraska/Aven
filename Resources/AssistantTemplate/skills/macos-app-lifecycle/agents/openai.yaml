@@ -1,0 +1,4 @@
+interface:
+  display_name: "macOS App Lifecycle"
+  short_description: "Inspect, install, update, or clean up macOS apps"
+  default_prompt: "Use $macos-app-lifecycle to handle this macOS app lifecycle task without losing user data."

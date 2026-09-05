@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meeting Notes"
+  short_description: "Capture consented meetings into decisions and follow-ups"
+  default_prompt: "Turn this consented meeting transcript into accurate notes and follow-ups."

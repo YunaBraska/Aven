@@ -1,0 +1,4 @@
+interface:
+  display_name: "Modern Languages"
+  short_description: "Modern Java, Kotlin, Go, Swift, and Rust"
+  default_prompt: "Use $modern-languages to implement this with the project's modern language conventions."

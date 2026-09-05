@@ -1,0 +1,3 @@
+interface:
+  display_name: "Calendar Access"
+  short_description: "Search an enabled macOS calendar safely"

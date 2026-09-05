@@ -1,0 +1,3 @@
+interface:
+  display_name: "Artifact Inspection"
+  short_description: "Edit and verify files without damaging their structure"

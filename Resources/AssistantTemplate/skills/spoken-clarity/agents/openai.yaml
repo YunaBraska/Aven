@@ -1,0 +1,3 @@
+interface:
+  display_name: "Spoken Clarity"
+  short_description: "Make technical output understandable aloud"

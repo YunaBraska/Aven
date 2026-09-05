@@ -1,0 +1,3 @@
+interface:
+  display_name: "Task Recipes"
+  short_description: "Reuse stable parameterized workflows"

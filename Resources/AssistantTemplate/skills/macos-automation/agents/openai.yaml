@@ -1,0 +1,4 @@
+interface:
+  display_name: "macOS Automation"
+  short_description: "Build native macOS automations safely"
+  default_prompt: "Use $macos-automation to implement this macOS automation with the least fragile native mechanism."

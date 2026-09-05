@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>Aven</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.yunabraska.aven</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+	<string>Aven</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+    <key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>The assistant opens Terminal only when you ask to resume the current Codex conversation.</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Aven uses the microphone while you hold the talk key or explicitly record a meeting.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>The assistant reads calendar events only when you ask about your schedule.</string>
+	<key>NSInputMonitoringUsageDescription</key>
+	<string>Aven detects only the physical hold-to-talk key and mnemonic shortcuts you select.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Aven transcribes your requests and meetings on this Mac.</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>Aven captures the active screen only when requested and system audio only during an explicitly started meeting recording.</string>
+</dict>
+</plist>

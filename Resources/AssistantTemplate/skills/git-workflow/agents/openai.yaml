@@ -1,0 +1,3 @@
+interface:
+  display_name: "Git Workflow"
+  short_description: "Handle repository changes without losing user work"

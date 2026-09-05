@@ -1,0 +1,4 @@
+interface:
+  display_name: "macOS Preferences"
+  short_description: "Inspect and change macOS preferences safely"
+  default_prompt: "Use $macos-preferences to inspect and change this macOS preference with native tools."

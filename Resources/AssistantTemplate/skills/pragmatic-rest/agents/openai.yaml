@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pragmatic REST"
+  short_description: "Design proportional, durable HTTP APIs"
+  default_prompt: "Use $pragmatic-rest to design or review this API without imposing unnecessary conventions."
