@@ -18,13 +18,26 @@ enum AvenMain {
     if AssistantContextCommand.handles(arguments) {
       Darwin.exit(AssistantContextCommand.run(arguments: arguments))
     }
-    let storageWarning: String?
+    var storageWarnings: [String] = []
     do {
-      storageWarning = try AssistantStorageMigration.prepare() == .conflict
-        ? "Legacy Aven data could not be merged automatically. Both storage folders were preserved."
-        : nil
+      if try AssistantStorageMigration.prepare() == .conflict {
+        storageWarnings.append(
+          "Legacy Aven data could not be merged automatically. Both storage folders were preserved."
+        )
+      }
     } catch {
-      storageWarning = "Legacy Aven data could not be migrated: \(error.localizedDescription)"
+      storageWarnings.append("Legacy Aven data could not be migrated: \(error.localizedDescription)")
+    }
+    do {
+      if try AssistantStorageMigration.prepareLegacyWorkspace() == .conflict {
+        storageWarnings.append(
+          "The historical assistant workspace could not be archived automatically. Both copies were preserved."
+        )
+      }
+    } catch {
+      storageWarnings.append(
+        "The historical assistant workspace could not be archived: \(error.localizedDescription)"
+      )
     }
     guard let instanceLock = SingleInstanceLock.acquire() else {
       if let identifier = Bundle.main.bundleIdentifier {
@@ -46,7 +59,10 @@ enum AvenMain {
       startupError = error.localizedDescription
     }
     let application = NSApplication.shared
-    let delegate = AppDelegate(startupError: startupError, startupWarning: storageWarning)
+    let delegate = AppDelegate(
+      startupError: startupError,
+      startupWarning: storageWarnings.isEmpty ? nil : storageWarnings.joined(separator: " ")
+    )
     application.delegate = delegate
     withExtendedLifetime(instanceLock) {
       withExtendedLifetime(delegate) {

@@ -59,6 +59,10 @@ enum AssistantPaths {
   }
 
   static var legacyWorkspaceURL: URL {
+    rootURL.appendingPathComponent("Historical Workspace", isDirectory: true)
+  }
+
+  static var historicalLegacyWorkspaceURL: URL {
     FileManager.default.homeDirectoryForCurrentUser
       .appendingPathComponent("VoiceAssistant", isDirectory: true)
   }
@@ -134,6 +138,44 @@ enum AssistantStorageMigration {
     try fileManager.setAttributes(
       [.posixPermissions: NSNumber(value: 0o700)],
       ofItemAtPath: current.path
+    )
+    return .migrated
+  }
+
+  static func prepareLegacyWorkspace(
+    legacyURL: URL = AssistantPaths.historicalLegacyWorkspaceURL,
+    archiveURL: URL = AssistantPaths.legacyWorkspaceURL,
+    fileManager: FileManager = .default
+  ) throws -> AssistantStorageMigrationResult {
+    let legacy = legacyURL.standardizedFileURL
+    let archive = archiveURL.standardizedFileURL
+    guard legacy != archive else { return .unchanged }
+    guard fileManager.fileExists(atPath: legacy.path) else { return .unchanged }
+    guard AssistantPaths.isVerifiedLegacyWorkspace(legacy) else {
+      throw AssistantStorageMigrationError.unsafePath(legacy.path)
+    }
+    if fileManager.fileExists(atPath: archive.path) {
+      guard AssistantPaths.isVerifiedLegacyWorkspace(archive) else {
+        throw AssistantStorageMigrationError.unsafePath(archive.path)
+      }
+      let legacyContents = try fileManager.contentsOfDirectory(atPath: legacy.path)
+      guard legacyContents.isEmpty else { return .conflict }
+      try fileManager.removeItem(at: legacy)
+      return .removedEmptyLegacyDirectory
+    }
+    let archiveParent = archive.deletingLastPathComponent()
+    try fileManager.createDirectory(
+      at: archiveParent,
+      withIntermediateDirectories: true,
+      attributes: [.posixPermissions: 0o700]
+    )
+    guard isSafeDirectory(archiveParent) else {
+      throw AssistantStorageMigrationError.unsafePath(archiveParent.path)
+    }
+    try fileManager.moveItem(at: legacy, to: archive)
+    try fileManager.setAttributes(
+      [.posixPermissions: NSNumber(value: 0o700)],
+      ofItemAtPath: archive.path
     )
     return .migrated
   }

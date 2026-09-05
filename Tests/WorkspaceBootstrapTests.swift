@@ -17,6 +17,7 @@ enum WorkspaceBootstrapTests {
       to: template
     )
     try verifiesStorageMigration(in: root)
+    try verifiesHistoricalWorkspaceArchival(in: root)
 
     try WorkspaceBootstrap.prepare(
       workspaceURL: workspace,
@@ -173,6 +174,37 @@ enum WorkspaceBootstrapTests {
     expect(
       FileManager.default.fileExists(atPath: legacy.appendingPathComponent("conflict").path),
       "conflicting legacy data must remain intact"
+    )
+  }
+
+  private static func verifiesHistoricalWorkspaceArchival(in root: URL) throws {
+    let legacy = root.appendingPathComponent("VoiceAssistant", isDirectory: true)
+    let archive = root.appendingPathComponent("private/Historical Workspace", isDirectory: true)
+    try FileManager.default.createDirectory(
+      at: legacy.appendingPathComponent("decisions", isDirectory: true),
+      withIntermediateDirectories: true
+    )
+    try Data("# Voice Assistant\n\nEigener Arbeitsbereich des Menüleisten-Assistenten.\n".utf8)
+      .write(to: legacy.appendingPathComponent("README.md"))
+    try Data("""
+      # 0001 – Begrenzte Berechtigungen des Sprachassistenten
+
+      Der Assistent erhält Schreibzugriff.
+      """.utf8).write(
+        to: legacy.appendingPathComponent("decisions/0001-assistant-boundaries.md")
+      )
+
+    expect(
+      try AssistantStorageMigration.prepareLegacyWorkspace(
+        legacyURL: legacy,
+        archiveURL: archive
+      ) == .migrated,
+      "verified home-directory workspace should move into private Aven storage"
+    )
+    expect(!FileManager.default.fileExists(atPath: legacy.path), "old home folder must be removed")
+    expect(
+      AssistantPaths.isVerifiedLegacyWorkspace(archive),
+      "the private archive must retain verifiable thread-ownership evidence"
     )
   }
 

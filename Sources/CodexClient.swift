@@ -825,6 +825,9 @@ final class CodexClient: @unchecked Sendable {
     var ownedPaths = Set([workspaceURL.standardizedFileURL.path])
     if AssistantPaths.isVerifiedLegacyWorkspace(legacyWorkspaceURL) {
       ownedPaths.insert(legacyWorkspaceURL.standardizedFileURL.path)
+      if legacyWorkspaceURL.standardizedFileURL == AssistantPaths.legacyWorkspaceURL.standardizedFileURL {
+        ownedPaths.insert(AssistantPaths.historicalLegacyWorkspaceURL.standardizedFileURL.path)
+      }
     }
     guard let enumerator = FileManager.default.enumerator(
       at: sessionsURL,
