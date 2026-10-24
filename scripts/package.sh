@@ -44,7 +44,7 @@ if [ -n "$notary_profile" ]; then
         "$dmg_path" \
         --keychain-profile "$notary_profile" \
         --wait \
-        --timeout 30m
+        --timeout 90m
     /usr/bin/xcrun stapler staple "$dmg_path"
 fi
 printf '%s\n' "$zip_path" "$dmg_path"
