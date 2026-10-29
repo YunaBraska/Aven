@@ -8,6 +8,8 @@
 Aven is a quiet macOS menu-bar companion for spoken work with Codex. Hold one key, speak, release
 it, and hear the answer. There is no permanent window, wake word, or always-listening microphone.
 
+**[Product site and user documentation](https://yunabraska.github.io/Aven/)**
+
 Aven is more than dictation into a chat. It keeps a continuing conversation, understands the active
 project, remembers useful decisions and preferences, can work with local files, and turns Codex's
 progress into short spoken updates while you remain in the application you were already using.
