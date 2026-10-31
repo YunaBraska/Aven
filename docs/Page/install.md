@@ -1,19 +1,28 @@
 ---
 layout: default
 title: Install
+description: Availability and requirements for the Aven macOS app.
 ---
 
-# Install
+<section class="page-heading">
+  <p class="eyebrow">Install Aven</p>
+  <h1>Release channel in preparation.</h1>
+  <p>Aven is under active development. A signed public macOS download is not available yet.</p>
+</section>
 
-[Aven](index.html) | [Documentation](documentation.html) | [Install](install.html)
+<section class="install-step">
+  <h2>Requirements</h2>
+  <p>Aven supports macOS 14 or later and uses an authenticated local Codex CLI for conversations.</p>
+</section>
 
-## External delivery
-
-The signed and notarized release channel is being prepared. Until it is published, build Aven from source.
-
-## Source
+<section class="install-step">
+  <h2>Build from source</h2>
+  <p>Until a public release exists, developers can build and test the project locally.</p>
 
 ```sh
 swift build
 swift test
 ```
+</section>
+
+<div class="callout"><p>Do not install unverified archives that claim to be Aven releases. The supported download path will be published here.</p></div>
