@@ -18,3 +18,5 @@ Redact credentials, tokens, customer data, and private payloads from commands, o
 progress. Explain evidence, likely cause, confidence, and the next discriminating check. When the user
 requests remediation, state impact and rollback, preserve existing management structures, make the
 smallest reversible change, and verify recovery through the real service boundary.
+Distinguish a requested action, an accepted command, and its observed effect. Account for delayed
+feedback and manual intervention before retrying; a successful command is not proof of recovery.

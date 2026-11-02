@@ -7,6 +7,9 @@ description: Review proposed or completed work for correctness, regressions, fai
 
 Review the actual artifact, relevant local instructions, diff, and public behavior. Derive only the
 perspectives that can change the result; do not run a ceremonial checklist or invent reviewers.
+Check the intended outcome and retained choices, including ongoing maintenance, resource, and
+attention costs. Separate observed failures from hypotheses; prefer a check that distinguishes
+plausible causes. Reassess the diagnosis when evidence contradicts it.
 
 Keep review read-only unless the user explicitly asks for fixes. Lead with findings ordered by
 severity. Each finding must identify the exact file, symbol, command, or observable behavior; explain
@@ -30,4 +33,6 @@ shims, and tests that no concrete requirement needs. Prefer a smaller obvious pa
 extensibility.
 
 If there are no findings, say so plainly and list only material residual risks or unverified checks.
-Never claim confidence that the evidence does not support.
+Verify results where they are used; successful execution alone does not establish the outcome.
+For comprehensive reviews, reconcile the requested scope with inspected and missing items.
+Never claim confidence or completeness that the evidence does not support.
