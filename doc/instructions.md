@@ -12,6 +12,13 @@ Aven assembles behavior from four visible layers. None of them contains hard-cod
    Startup discovers every valid bundle dynamically and synchronizes it to `.agents/skills`, where
    Codex loads a skill only when its semantic description matches the current task.
 
+The contract routes adaptive behavior to `memory-curation`: user work rules live in SQLite
+`preference_rules`, answer-shape preferences in `style_signals`, and the assistant's own character
+in `assistant_traits`. Rules describe conditions, behavior, and an observable outcome, so their
+meaning can transfer across topics. Only relevant active context is retrieved; corrections update
+the applicable rule rather than growing the permanent prompt. Retrieval is instruction-driven by
+Codex, not a Swift memory-injection or enforcement layer.
+
 Before a normal turn, `Sources/ModelRouter.swift` asks a short isolated Codex planning pass to select
 from the live model and effort catalog and to choose an existing project context when appropriate.
 The planner itself is selected from live structured capabilities, preferring an available text-only
